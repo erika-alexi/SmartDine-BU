@@ -25,52 +25,52 @@ export function CartPage() {
   }
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-4xl px-3 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/menu')}
-          className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-6"
+          className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-[#F57C00] sm:mb-6 sm:text-base"
         >
           <ArrowLeft className="h-5 w-5" />
           Continue Shopping
         </button>
 
-        <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Shopping Cart</h1>
+        <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Shopping Cart</h1>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
           {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="space-y-3 lg:col-span-2 sm:space-y-4">
             {cart.map((item, index) => (
-              <div key={`${item.id}-${index}`} className="rounded-lg bg-white p-4 shadow-md">
-                <div className="flex flex-col gap-4 sm:flex-row">
+              <div key={`${item.id}-${index}`} className="rounded-lg bg-white p-3 shadow-md sm:p-4">
+                <div className="grid grid-cols-[5.5rem_1fr] gap-3 sm:flex sm:gap-4">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="h-40 w-full rounded-lg object-cover sm:h-24 sm:w-24"
+                    className="h-24 w-full rounded-lg object-cover sm:h-24 sm:w-24"
                   />
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{item.name}</h3>
-                    <p className="text-sm text-gray-500 mb-2">{item.category}</p>
+                    <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-gray-900 sm:text-base">{item.name}</h3>
+                    <p className="mb-1 text-xs text-gray-500 sm:mb-2 sm:text-sm">{item.category}</p>
                     {item.addOns && item.addOns.length > 0 && (
-                      <div className="text-xs text-gray-600 mb-2">
+                      <div className="mb-1 text-xs text-gray-600 sm:mb-2">
                         <p className="font-medium">Add-ons:</p>
                         {item.addOns.map(addOn => (
                           <p key={addOn.id}>- {addOn.name} (+₱{addOn.price})</p>
                         ))}
                       </div>
                     )}
-                    <p className="text-lg font-bold text-[#F57C00]">
+                    <p className="text-base font-bold text-[#F57C00] sm:text-lg">
                       ₱{item.price + (item.addOns?.reduce((sum, a) => sum + a.price, 0) || 0)}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between gap-3 sm:flex-col sm:items-end">
+                  <div className="col-span-2 flex items-center justify-between gap-3 border-t border-gray-100 pt-2 sm:col-span-1 sm:flex-col sm:items-end sm:border-t-0 sm:pt-0">
                     <button
                       onClick={() => removeFromCart(item.id, item.addOns)}
-                      className="text-red-500 hover:text-red-700 p-2"
+                      className="p-2 text-red-500 hover:text-red-700"
                     >
                       <Trash2 className="h-5 w-5" />
                     </button>
-                    <div className="flex items-center gap-2 border border-gray-300 rounded-lg">
+                    <div className="flex items-center gap-1 rounded-lg border border-gray-300 sm:gap-2">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1, item.addOns)}
                         className="p-2 hover:bg-gray-100 rounded-l-lg"
@@ -94,8 +94,8 @@ export function CartPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-20 rounded-lg bg-white p-4 shadow-md sm:p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
-              <div className="space-y-3 mb-6">
+              <h2 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">Order Summary</h2>
+              <div className="mb-4 space-y-2 sm:mb-6 sm:space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
                   <span className="font-semibold">₱{totalPrice}</span>
@@ -109,7 +109,7 @@ export function CartPage() {
               </div>
               <button
                 onClick={() => navigate('/checkout')}
-                className="w-full bg-[#F57C00] text-white py-3 rounded-lg hover:bg-[#E65100] font-semibold"
+                className="w-full rounded-lg bg-[#F57C00] py-2.5 font-semibold text-white hover:bg-[#E65100] sm:py-3"
               >
                 Proceed to Checkout
               </button>

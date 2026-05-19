@@ -57,25 +57,25 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-4xl px-3 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/cart')}
-          className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-6"
+          className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-[#F57C00] sm:mb-6 sm:text-base"
         >
           <ArrowLeft className="h-5 w-5" />
           Back to Cart
         </button>
 
-        <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Checkout</h1>
+        <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Checkout</h1>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+          <div className="space-y-4 lg:col-span-2 sm:space-y-6">
             {/* Order Details */}
             <div className="rounded-lg bg-white p-4 shadow-md sm:p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Order Details</h2>
-              <div className="space-y-3">
-                <div>
+              <h2 className="mb-3 text-lg font-semibold text-gray-900 sm:mb-4 sm:text-xl">Order Details</h2>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Student Name
                   </label>
@@ -128,9 +128,9 @@ export function CheckoutPage() {
 
             {/* Payment Method */}
             <div className="rounded-lg bg-white p-4 shadow-md sm:p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment Method</h2>
-              <div className="space-y-3">
-                <label className="flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors border-gray-300 has-[:checked]:border-[#F57C00] has-[:checked]:bg-orange-50">
+              <h2 className="mb-3 text-lg font-semibold text-gray-900 sm:mb-4 sm:text-xl">Payment Method</h2>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <label className="flex cursor-pointer items-center gap-3 rounded-lg border-2 border-gray-300 p-3 transition-colors hover:bg-gray-50 has-[:checked]:border-[#F57C00] has-[:checked]:bg-orange-50 sm:p-4">
                   <input
                     type="radio"
                     name="payment"
@@ -144,7 +144,7 @@ export function CheckoutPage() {
                     <p className="text-sm text-gray-600">Pay when you pick up your order</p>
                   </div>
                 </label>
-                <label className="flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors border-gray-300 has-[:checked]:border-[#F57C00] has-[:checked]:bg-orange-50">
+                <label className="flex cursor-pointer items-center gap-3 rounded-lg border-2 border-gray-300 p-3 transition-colors hover:bg-gray-50 has-[:checked]:border-[#F57C00] has-[:checked]:bg-orange-50 sm:p-4">
                   <input
                     type="radio"
                     name="payment"
@@ -165,8 +165,8 @@ export function CheckoutPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-20 rounded-lg bg-white p-4 shadow-md sm:p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
-              <div className="space-y-2 mb-4">
+              <h2 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4 sm:text-xl">Order Summary</h2>
+              <div className="mb-3 space-y-2 sm:mb-4">
                 {cart.map((item, index) => (
                   <div key={`${item.id}-${index}`} className="flex justify-between gap-3 text-sm">
                     <span className="min-w-0 break-words text-gray-600">
@@ -200,7 +200,7 @@ export function CheckoutPage() {
                 </div>
                 <button
                   onClick={handlePlaceOrder}
-                  className="w-full bg-[#F57C00] text-white py-3 rounded-lg hover:bg-[#E65100] font-semibold"
+                  className="w-full rounded-lg bg-[#F57C00] py-2.5 font-semibold text-white hover:bg-[#E65100] sm:py-3"
                 >
                   Place Order
                 </button>

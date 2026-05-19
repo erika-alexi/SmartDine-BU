@@ -137,59 +137,60 @@ export function MenuManagementPage() {
   };
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/admin/dashboard')}
-          className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-6"
+          className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-[#F57C00] sm:mb-6 sm:text-base"
         >
           <ArrowLeft className="h-5 w-5" />
           Back to Dashboard
         </button>
 
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-5 flex items-end justify-between gap-3 sm:mb-8 sm:items-center">
           <div>
-            <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Menu Management</h1>
-            <p className="text-gray-600">Add, edit, or remove menu items</p>
+            <h1 className="mb-1 text-2xl font-bold text-gray-900 sm:mb-2 sm:text-3xl">Menu Management</h1>
+            <p className="text-sm text-gray-600 sm:text-base">Add, edit, or remove menu items</p>
           </div>
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#F57C00] px-6 py-3 text-white hover:bg-[#E65100] sm:w-auto"
+            className="flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#F57C00] px-3 py-2.5 text-sm text-white hover:bg-[#E65100] sm:w-auto sm:px-6 sm:py-3 sm:text-base"
           >
             <Plus className="h-5 w-5" />
-            Add New Item
+            <span className="hidden sm:inline">Add New Item</span>
+            <span className="sm:hidden">Add</span>
           </button>
         </div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           {menuItems.map(item => (
             <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-40 object-cover"
+                className="h-28 w-full object-cover sm:h-40"
               />
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-1">{item.name}</h3>
-                <p className="text-sm text-gray-500 mb-2">{item.category}</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-gray-900 sm:text-base">{item.name}</h3>
+                <p className="mb-2 truncate text-xs text-gray-500 sm:text-sm">{item.category}</p>
                 {item.allergens && item.allergens.length > 0 && (
                   <p className="text-xs text-red-600 mb-2">
                     Allergens: {item.allergens.join(', ')}
                   </p>
                 )}
                 <p className="text-xl font-bold text-[#F57C00] mb-3">₱{item.price}</p>
-                <div className="flex flex-col gap-2 sm:flex-row">
+                <div className="flex gap-2">
                   <button
                     onClick={() => handleEdit(item)}
-                    className="flex-1 bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 flex items-center justify-center gap-1"
+                    className="flex flex-1 items-center justify-center gap-1 rounded-lg bg-blue-500 px-2 py-2 text-xs text-white hover:bg-blue-600 sm:px-3 sm:text-base"
                   >
                     <Edit className="h-4 w-4" />
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600 flex items-center justify-center gap-1"
+                    className="flex flex-1 items-center justify-center gap-1 rounded-lg bg-red-500 px-2 py-2 text-xs text-white hover:bg-red-600 sm:px-3 sm:text-base"
                   >
                     <Trash2 className="h-4 w-4" />
                     Delete

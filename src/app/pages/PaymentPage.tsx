@@ -36,31 +36,31 @@ export function PaymentPage() {
   };
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-2xl px-3 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/checkout')}
-          className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-6"
+          className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-[#F57C00] sm:mb-6 sm:text-base"
         >
           <ArrowLeft className="h-5 w-5" />
           Back to Checkout
         </button>
 
-        <div className="rounded-lg bg-white p-5 shadow-lg sm:p-8">
+        <div className="rounded-lg bg-white p-4 shadow-lg sm:p-8">
           <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">GCash Payment</h1>
-          <p className="text-gray-600 mb-8">Scan the QR code below to complete your payment</p>
+          <p className="mb-5 text-sm text-gray-600 sm:mb-8 sm:text-base">Scan the QR code below to complete your payment</p>
 
           {/* QR Code */}
-          <div className="mb-8">
-            <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 sm:p-8">
+          <div className="mb-5 sm:mb-8">
+            <div className="flex flex-col items-center rounded-lg bg-gray-100 p-3 sm:p-8">
               <div className="mb-4 rounded-lg bg-white p-3 shadow-md sm:p-4">
-                <div className="flex h-56 w-56 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 sm:h-64 sm:w-64">
-                  <div className="rounded bg-white p-5 sm:p-6">
+                <div className="flex h-44 w-44 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 sm:h-64 sm:w-64">
+                  <div className="rounded bg-white p-4 sm:p-6">
                     <div className="grid grid-cols-8 gap-1">
                       {qrCells.map((filled, i) => (
                         <div
                           key={i}
-                          className={`w-3 h-3 ${filled ? 'bg-black' : 'bg-white'}`}
+                          className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${filled ? 'bg-black' : 'bg-white'}`}
                         />
                       ))}
                     </div>
@@ -73,11 +73,11 @@ export function PaymentPage() {
           </div>
 
           {/* Upload Proof */}
-          <div className="mb-8">
-            <label className="block text-lg font-semibold text-gray-900 mb-3">
+          <div className="mb-5 sm:mb-8">
+            <label className="mb-3 block font-semibold text-gray-900 sm:text-lg">
               Upload Proof of Payment
             </label>
-            <div className="rounded-lg border-2 border-dashed border-gray-300 p-5 text-center transition-colors hover:border-[#F57C00] sm:p-8">
+            <div className="rounded-lg border-2 border-dashed border-gray-300 p-4 text-center transition-colors hover:border-[#F57C00] sm:p-8">
               <input
                 type="file"
                 accept="image/*"
@@ -89,12 +89,12 @@ export function PaymentPage() {
                 htmlFor="proof-upload"
                 className="cursor-pointer flex flex-col items-center"
               >
-                <Upload className="h-12 w-12 text-gray-400 mb-3" />
+                <Upload className="mb-2 h-10 w-10 text-gray-400 sm:mb-3 sm:h-12 sm:w-12" />
                 {proofOfPayment ? (
                   <p className="break-all font-medium text-[#F57C00]">{proofOfPayment.name}</p>
                 ) : (
                   <>
-                    <p className="text-gray-600 mb-1">Click to upload screenshot</p>
+                    <p className="mb-1 text-sm text-gray-600 sm:text-base">Click to upload screenshot</p>
                     <p className="text-sm text-gray-400">PNG, JPG up to 10MB</p>
                   </>
                 )}
@@ -106,7 +106,7 @@ export function PaymentPage() {
           <button
             onClick={handleConfirmPayment}
             disabled={!proofOfPayment}
-            className="w-full bg-[#F57C00] text-white py-3 rounded-lg hover:bg-[#E65100] font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full rounded-lg bg-[#F57C00] py-2.5 font-semibold text-white hover:bg-[#E65100] disabled:cursor-not-allowed disabled:bg-gray-300 sm:py-3"
           >
             Confirm Payment
           </button>

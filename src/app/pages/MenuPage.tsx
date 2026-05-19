@@ -69,29 +69,29 @@ export function MenuPage() {
   };
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-4 sm:mb-8">
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-4"
+            className="mb-3 flex items-center gap-2 text-sm text-gray-600 hover:text-[#F57C00] sm:mb-4 sm:text-base"
           >
             <ArrowLeft className="h-5 w-5" />
             Back to Home
           </button>
 
-          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+          <h1 className="mb-1 text-2xl font-bold text-gray-900 sm:mb-2 sm:text-3xl">
             Our Menu
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm text-gray-600 sm:text-base">
             Browse our delicious Filipino food selection
           </p>
         </div>
 
         {/* Search */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <input
@@ -99,18 +99,18 @@ export function MenuPage() {
               placeholder="Search for food..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F57C00]"
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#F57C00] sm:py-3 sm:text-base"
             />
           </div>
         </div>
 
         {/* Categories */}
-        <div className="mb-8 flex flex-wrap gap-2">
+        <div className="mb-5 flex gap-2 overflow-x-auto pb-1 sm:mb-8 sm:flex-wrap sm:overflow-visible">
           {categories.map(category => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors sm:px-4 sm:text-base ${
+              className={`shrink-0 rounded-lg px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-base ${
                 selectedCategory === category
                   ? 'bg-[#F57C00] text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
@@ -128,7 +128,7 @@ export function MenuPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           {filteredItems.map(item => (
             <div
               key={item.id}
@@ -138,7 +138,7 @@ export function MenuPage() {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-40 object-cover"
+                  className="h-28 w-full object-cover sm:h-40"
                 />
                 {item.allergens && item.allergens.length > 0 && (
                   <div className="absolute top-2 right-2 group">
@@ -155,23 +155,23 @@ export function MenuPage() {
                 )}
               </div>
 
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-1">
+              <div className="p-3 sm:p-4">
+                <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-gray-900 sm:text-base">
                   {item.name}
                 </h3>
 
-                <p className="text-sm text-gray-500 mb-3">
+                <p className="mb-2 truncate text-xs text-gray-500 sm:mb-3 sm:text-sm">
                   {item.category}
                 </p>
 
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-xl font-bold text-[#F57C00]">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <span className="text-lg font-bold text-[#F57C00] sm:text-xl">
                     ₱{item.price}
                   </span>
 
                   <button
                     onClick={() => handleAddToCart(item)}
-                    className="flex shrink-0 items-center gap-1 rounded-lg bg-[#F57C00] px-3 py-2 text-white hover:bg-[#E65100]"
+                    className="flex shrink-0 items-center justify-center gap-1 rounded-lg bg-[#F57C00] px-3 py-2 text-xs text-white hover:bg-[#E65100] sm:text-base"
                   >
                     <ShoppingCart className="h-4 w-4" />
                     Add
@@ -204,7 +204,7 @@ export function MenuPage() {
               {Object.entries(addOnOptions).map(([groupName, options]) => (
                 <div key={groupName}>
                   <h3 className="capitalize font-semibold text-gray-900 mb-2">{groupName}</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {options.map(addOn => {
                       const checked = selectedAddOns.some(item => item.id === addOn.id);
                       return (
@@ -212,13 +212,13 @@ export function MenuPage() {
                           key={addOn.id}
                           type="button"
                           onClick={() => toggleAddOn(addOn)}
-                          className={`text-left border rounded-lg p-3 transition-colors ${
+                          className={`rounded-lg border p-2 text-left transition-colors sm:p-3 ${
                             checked
                               ? 'border-[#F57C00] bg-orange-50 text-gray-900'
                               : 'border-gray-200 hover:border-[#F57C00]'
                           }`}
                         >
-                          <span className="block font-medium">{addOn.name}</span>
+                          <span className="block text-sm font-medium sm:text-base">{addOn.name}</span>
                           <span className="text-sm text-gray-600">+₱{addOn.price}</span>
                         </button>
                       );

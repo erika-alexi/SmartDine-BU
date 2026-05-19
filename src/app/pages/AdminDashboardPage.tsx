@@ -62,24 +62,24 @@ export function AdminDashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen py-6 sm:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
+    <div className="min-h-screen py-4 sm:py-8">
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+        <div className="mb-5 sm:mb-8">
           <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Admin Dashboard</h1>
-          <p className="text-gray-600">Manage orders and menu items</p>
+          <p className="text-sm text-gray-600 sm:text-base">Manage orders and menu items</p>
         </div>
 
         {/* Stats Grid */}
-        <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="mb-5 grid grid-cols-2 gap-3 sm:mb-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="rounded-lg bg-white p-4 shadow-md sm:p-6">
-              <div className="flex items-center justify-between">
+            <div key={index} className="rounded-lg bg-white p-3 shadow-md sm:p-6">
+              <div className="flex items-start justify-between gap-2 sm:items-center">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="mb-1 text-xs text-gray-600 sm:text-sm">{stat.label}</p>
+                  <p className="text-xl font-bold text-gray-900 sm:text-2xl">{stat.value}</p>
                 </div>
-                <div className={`p-3 rounded-lg ${stat.color}`}>
-                  <stat.icon className="h-6 w-6" />
+                <div className={`rounded-lg p-2 sm:p-3 ${stat.color}`}>
+                  <stat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
               </div>
             </div>
@@ -87,33 +87,33 @@ export function AdminDashboardPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
+        <div className="mb-5 grid grid-cols-2 gap-3 md:grid-cols-2 lg:mb-8 lg:gap-6">
           <button
             onClick={() => navigate('/admin/orders')}
-            className="rounded-lg bg-white p-4 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
+            className="rounded-lg bg-white p-3 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
           >
-            <div className="flex items-start gap-4 sm:items-center">
-              <div className="bg-orange-100 p-4 rounded-lg">
-                <Package className="h-8 w-8 text-[#F57C00]" />
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <div className="w-fit rounded-lg bg-orange-100 p-3 sm:p-4">
+                <Package className="h-6 w-6 text-[#F57C00] sm:h-8 sm:w-8" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Manage Orders</h3>
-                <p className="text-gray-600">View and update order status</p>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900 sm:text-lg">Manage Orders</h3>
+                <p className="text-xs text-gray-600 sm:text-base">View and update order status</p>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => navigate('/admin/menu')}
-            className="rounded-lg bg-white p-4 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
+            className="rounded-lg bg-white p-3 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
           >
-            <div className="flex items-start gap-4 sm:items-center">
-              <div className="bg-blue-100 p-4 rounded-lg">
-                <Utensils className="h-8 w-8 text-[#4FC3F7]" />
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <div className="w-fit rounded-lg bg-blue-100 p-3 sm:p-4">
+                <Utensils className="h-6 w-6 text-[#4FC3F7] sm:h-8 sm:w-8" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Manage Menu</h3>
-                <p className="text-gray-600">Add, edit, or remove menu items</p>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900 sm:text-lg">Manage Menu</h3>
+                <p className="text-xs text-gray-600 sm:text-base">Add, edit, or remove menu items</p>
               </div>
             </div>
           </button>
