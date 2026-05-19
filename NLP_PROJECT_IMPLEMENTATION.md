@@ -1,6 +1,6 @@
 ﻿# SmartDine BU NLP Project Implementation
 
-SmartDine BU was developed as a web-based canteen ordering and queue system for the Bicol University Polangui community. The system includes registration and login, menu browsing, pre-ordering, COD and GCash payment options, order tracking, admin order management, allergen information, ASAP pickup, and an NLP chatbot for common canteen-related questions.
+SmartDine BU was developed as a responsive web-based canteen ordering and queue system for the Bicol University Polangui community. The system includes registration and login, menu browsing, pre-ordering, COD and GCash payment options, order tracking, admin order management, allergen information, ASAP pickup, and an NLP chatbot for common canteen-related questions.
 
 Technologies used:
 
@@ -12,6 +12,7 @@ Technologies used:
 - NLP tools/APIs: local JavaScript/TypeScript NLP module and browser Web Speech API
 - Design/development/deployment tools: Figma UI prototype/reference, VS Code, GitHub, and Vercel
 - Runtime requirements: modern browser with JavaScript enabled, browser storage enabled, optional microphone permission, and stable internet connection
+- Device compatibility: mobile, tablet, laptop, and desktop layouts
 - Evaluation focus: usability, performance, and reliability as guided by ISO/IEC 25010
 
 Note on the database requirement: Chapter 3 mentioned MongoDB, while the NLP instruction also mentioned MySQL as a recommended database option. For the actual deployed system, I used Supabase PostgreSQL because it already provides the database, API access, authentication support, and row-level security needed by the project.
@@ -49,7 +50,7 @@ For a complete Chapter 1-3 mapping, see `SYSTEM_REQUIREMENTS_ALIGNMENT.md`.
 
 ## Demo
 
-The chatbot can be opened using the floating SmartDine Chatbot button at the bottom-right of the system. The separate `/nlp-chatbot` page redirects to the home page so the system only uses one chatbot interface.
+The chatbot can be opened using the floating SmartDine Chatbot button at the bottom-right of the system. On mobile, the same chatbot opens in a larger phone-friendly panel. The separate `/nlp-chatbot` page redirects to the home page so the system only uses one chatbot interface.
 
 Sample inputs:
 
@@ -73,6 +74,17 @@ The deployed system uses Supabase PostgreSQL for user profiles, menu items, orde
 ```text
 database/smartdine_supabase_schema.sql
 ```
+
+## Responsive Interface Implementation
+
+The system supports both computer and mobile views through responsive Tailwind CSS classes in the page components and app shell.
+
+- `src/app/components/RootLayout.tsx` changes the desktop navigation row into a compact mobile menu.
+- `src/app/components/ChatBot.tsx` uses a desktop floating widget and a mobile-safe panel that fits within the viewport.
+- `src/app/components/NotificationPanel.tsx` uses mobile-safe width and height constraints.
+- `src/app/pages/HomePage.tsx`, `MenuPage.tsx`, `CartPage.tsx`, `CheckoutPage.tsx`, `PaymentPage.tsx`, `MyOrdersPage.tsx`, and `OrderStatusPage.tsx` use responsive spacing, typography, grids, cards, and action buttons.
+- `src/app/pages/AdminDashboardPage.tsx`, `OrderManagementPage.tsx`, and `MenuManagementPage.tsx` adapt admin cards, filters, and management actions for smaller screens.
+- Modals use viewport-based height limits and internal scrolling to prevent content from being cut off on phones.
 
 ## System Flowchart
 

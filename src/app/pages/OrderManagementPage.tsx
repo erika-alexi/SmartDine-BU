@@ -82,7 +82,7 @@ export function OrderManagementPage() {
   });
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/admin/dashboard')}
@@ -93,12 +93,12 @@ export function OrderManagementPage() {
         </button>
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Order Management</h1>
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Order Management</h1>
           <p className="text-gray-600">View and manage all orders</p>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="mb-6 rounded-lg bg-white p-4 shadow-md sm:p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -132,11 +132,11 @@ export function OrderManagementPage() {
         ) : (
           <div className="space-y-4">
             {filteredOrders.map(order => (
-              <div key={order.id} className="bg-white rounded-lg shadow-md p-6">
+              <div key={order.id} className="rounded-lg bg-white p-4 shadow-md sm:p-6">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <h3 className="font-bold text-gray-900">Order #{order.id}</h3>
+                    <div className="mb-3 flex flex-wrap items-center gap-3">
+                      <h3 className="break-all font-bold text-gray-900">Order #{order.id}</h3>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                         order.status === 'Completed'
                           ? 'bg-green-100 text-green-800'
@@ -180,7 +180,7 @@ export function OrderManagementPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col gap-2 min-w-[200px]">
+                  <div className="flex w-full flex-col gap-2 lg:w-auto lg:min-w-[200px]">
                     {order.status !== 'Completed' && (
                       <>
                         <select

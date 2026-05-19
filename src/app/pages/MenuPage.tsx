@@ -69,11 +69,11 @@ export function MenuPage() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <button
             onClick={() => navigate('/')}
             className="flex items-center gap-2 text-gray-600 hover:text-[#F57C00] mb-4"
@@ -82,7 +82,7 @@ export function MenuPage() {
             Back to Home
           </button>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">
             Our Menu
           </h1>
           <p className="text-gray-600">
@@ -105,12 +105,12 @@ export function MenuPage() {
         </div>
 
         {/* Categories */}
-        <div className="mb-8 flex gap-2 flex-wrap">
+        <div className="mb-8 flex flex-wrap gap-2">
           {categories.map(category => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors sm:px-4 sm:text-base ${
                 selectedCategory === category
                   ? 'bg-[#F57C00] text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
@@ -128,7 +128,7 @@ export function MenuPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {filteredItems.map(item => (
             <div
               key={item.id}
@@ -164,14 +164,14 @@ export function MenuPage() {
                   {item.category}
                 </p>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-3">
                   <span className="text-xl font-bold text-[#F57C00]">
                     ₱{item.price}
                   </span>
 
                   <button
                     onClick={() => handleAddToCart(item)}
-                    className="bg-[#F57C00] text-white px-3 py-2 rounded-lg hover:bg-[#E65100] flex items-center gap-1"
+                    className="flex shrink-0 items-center gap-1 rounded-lg bg-[#F57C00] px-3 py-2 text-white hover:bg-[#E65100]"
                   >
                     <ShoppingCart className="h-4 w-4" />
                     Add
@@ -193,10 +193,10 @@ export function MenuPage() {
 
       {/* Add-ons Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-2xl w-full p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-4">
+          <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-4 sm:p-6">
 
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="mb-4 text-xl font-bold sm:text-2xl">
               Customize {selectedItem.name}
             </h2>
 
@@ -239,7 +239,7 @@ export function MenuPage() {
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => setSelectedItem(null)}
                 className="flex-1 border border-gray-300 py-3 rounded-lg"

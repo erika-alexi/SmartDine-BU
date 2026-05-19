@@ -62,17 +62,17 @@ export function AdminDashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Admin Dashboard</h1>
           <p className="text-gray-600">Manage orders and menu items</p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6">
+            <div key={index} className="rounded-lg bg-white p-4 shadow-md sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
@@ -87,12 +87,12 @@ export function AdminDashboardPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
           <button
             onClick={() => navigate('/admin/orders')}
-            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow text-left"
+            className="rounded-lg bg-white p-4 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-start gap-4 sm:items-center">
               <div className="bg-orange-100 p-4 rounded-lg">
                 <Package className="h-8 w-8 text-[#F57C00]" />
               </div>
@@ -105,9 +105,9 @@ export function AdminDashboardPage() {
 
           <button
             onClick={() => navigate('/admin/menu')}
-            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow text-left"
+            className="rounded-lg bg-white p-4 text-left shadow-md transition-shadow hover:shadow-lg sm:p-6"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-start gap-4 sm:items-center">
               <div className="bg-blue-100 p-4 rounded-lg">
                 <Utensils className="h-8 w-8 text-[#4FC3F7]" />
               </div>
@@ -120,7 +120,7 @@ export function AdminDashboardPage() {
         </div>
 
         {/* Recent Orders */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="rounded-lg bg-white p-4 shadow-md sm:p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Orders</h2>
           {recentOrders.length === 0 ? (
             <p className="text-gray-500 text-center py-8">No orders yet</p>
@@ -129,11 +129,11 @@ export function AdminDashboardPage() {
               {recentOrders.map(order => (
                 <div
                   key={order.id}
-                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50"
+                  className="flex flex-col gap-3 rounded-lg border border-gray-200 p-4 hover:bg-gray-50 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1">
-                      <p className="font-semibold text-gray-900">Order #{order.id}</p>
+                    <div className="mb-1 flex flex-wrap items-center gap-3">
+                      <p className="break-all font-semibold text-gray-900">Order #{order.id}</p>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         order.status === 'Completed'
                           ? 'bg-green-100 text-green-800'
@@ -144,7 +144,7 @@ export function AdminDashboardPage() {
                     </div>
                     <p className="text-sm text-gray-600">{order.userName} • {order.items.length} items</p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <p className="font-bold text-[#F57C00]">₱{order.total}</p>
                     <p className="text-xs text-gray-500">{order.paymentMethod}</p>
                   </div>

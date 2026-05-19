@@ -4,6 +4,8 @@
 
 The project uses Vitest and React Testing Library to check the main authentication, NLP, and pickup-time behavior used in SmartDine BU.
 
+Responsive compatibility is reviewed for desktop and mobile views, including navigation, page grids, forms, cards, modals, notifications, and the chatbot panel.
+
 ## Test Framework
 
 - Test runner: Vitest
@@ -11,6 +13,7 @@ The project uses Vitest and React Testing Library to check the main authenticati
 - Browser simulation: jsdom
 - Test setup: `src/test/setup.ts`
 - Payment scope checked: COD and GCash proof-of-payment checkout behavior
+- Responsive scope checked manually through source review and production build: desktop layouts, mobile menu, compact cards, modal height/scroll behavior, notification panel, and chatbot panel
 
 ## Running Tests
 
@@ -52,6 +55,16 @@ For production admin access, the user must be a Supabase Auth user with `public.
 - Regular pickup times less than 30 minutes from now are rejected.
 - Pickup times that already passed today trigger a tomorrow warning.
 
+### Responsive UI Review
+
+- Desktop header keeps full navigation and user actions visible.
+- Mobile header uses a compact menu button to prevent horizontal overflow.
+- Menu, home specials, admin dashboard, and management cards adapt between one, two, three, and four columns depending on viewport width.
+- Cart and order cards stack content on mobile, then return to horizontal layouts on larger screens.
+- Checkout/payment forms keep full-width inputs and action buttons on small screens.
+- Add-on and menu management modals use max viewport height with internal scrolling.
+- Notification panel and chatbot panel fit inside phone-sized viewports.
+
 ## Latest Verification
 
 Latest local verification:
@@ -61,6 +74,8 @@ Test Files: 3 passed
 Tests: 27 passed
 Build: successful
 ```
+
+If dependency installation is missing, run `npm install` before running the verification commands.
 
 ## Defense Notes
 

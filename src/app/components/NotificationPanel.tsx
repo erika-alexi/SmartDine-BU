@@ -20,11 +20,11 @@ export function NotificationPanel({ onClose }: NotificationPanelProps) {
   };
 
   return (
-    <div className="fixed top-16 right-4 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-[500px] flex flex-col">
+    <div className="fixed inset-x-3 top-20 z-50 flex max-h-[calc(100vh-6rem)] flex-col rounded-lg border border-gray-200 bg-white shadow-2xl sm:left-auto sm:right-4 sm:w-96">
       {/* Header */}
-      <div className="p-4 border-b flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3 border-b p-4">
         <h3 className="font-semibold text-gray-900">Notifications</h3>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           {notifications.some(n => !n.read) && (
             <button
               onClick={markAllAsRead}
@@ -59,14 +59,14 @@ export function NotificationPanel({ onClose }: NotificationPanelProps) {
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="font-semibold text-gray-900">{notification.title}</p>
+                      <p className="break-words font-semibold text-gray-900">{notification.title}</p>
                       {!notification.read && (
                         <span className="w-2 h-2 bg-[#F57C00] rounded-full"></span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
+                    <p className="mt-1 break-words text-sm text-gray-600">{notification.message}</p>
                     <p className="text-xs text-gray-400 mt-2">
                       {formatDistanceToNow(notification.timestamp, { addSuffix: true })}
                     </p>

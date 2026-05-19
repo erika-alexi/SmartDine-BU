@@ -36,7 +36,7 @@ export function PaymentPage() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/checkout')}
@@ -46,16 +46,16 @@ export function PaymentPage() {
           Back to Checkout
         </button>
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">GCash Payment</h1>
+        <div className="rounded-lg bg-white p-5 shadow-lg sm:p-8">
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">GCash Payment</h1>
           <p className="text-gray-600 mb-8">Scan the QR code below to complete your payment</p>
 
           {/* QR Code */}
           <div className="mb-8">
-            <div className="bg-gray-100 rounded-lg p-8 flex flex-col items-center">
-              <div className="bg-white p-4 rounded-lg shadow-md mb-4">
-                <div className="w-64 h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <div className="bg-white p-6 rounded">
+            <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 sm:p-8">
+              <div className="mb-4 rounded-lg bg-white p-3 shadow-md sm:p-4">
+                <div className="flex h-56 w-56 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 sm:h-64 sm:w-64">
+                  <div className="rounded bg-white p-5 sm:p-6">
                     <div className="grid grid-cols-8 gap-1">
                       {qrCells.map((filled, i) => (
                         <div
@@ -77,7 +77,7 @@ export function PaymentPage() {
             <label className="block text-lg font-semibold text-gray-900 mb-3">
               Upload Proof of Payment
             </label>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-[#F57C00] transition-colors">
+            <div className="rounded-lg border-2 border-dashed border-gray-300 p-5 text-center transition-colors hover:border-[#F57C00] sm:p-8">
               <input
                 type="file"
                 accept="image/*"
@@ -91,7 +91,7 @@ export function PaymentPage() {
               >
                 <Upload className="h-12 w-12 text-gray-400 mb-3" />
                 {proofOfPayment ? (
-                  <p className="text-[#F57C00] font-medium">{proofOfPayment.name}</p>
+                  <p className="break-all font-medium text-[#F57C00]">{proofOfPayment.name}</p>
                 ) : (
                   <>
                     <p className="text-gray-600 mb-1">Click to upload screenshot</p>

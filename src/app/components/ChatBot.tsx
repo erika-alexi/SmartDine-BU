@@ -97,7 +97,7 @@ export function ChatBot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-[#F57C00] text-white p-4 rounded-full shadow-lg hover:bg-[#E65100] transition-all z-50"
+          className="fixed bottom-4 right-4 z-50 rounded-full bg-[#F57C00] p-4 text-white shadow-lg transition-all hover:bg-[#E65100] sm:bottom-6 sm:right-6"
           title="Open SmartDine chatbot"
         >
           <MessageCircle className="h-6 w-6" />
@@ -105,7 +105,7 @@ export function ChatBot() {
       )}
 
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-[390px] max-w-[calc(100vw-2rem)] h-[620px] bg-white rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200">
+        <div className="fixed inset-x-3 bottom-3 top-20 z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl sm:left-auto sm:right-6 sm:top-auto sm:h-[620px] sm:w-[390px] sm:max-w-[calc(100vw-2rem)]">
           <div className="bg-[#F57C00] text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5" />
@@ -119,7 +119,7 @@ export function ChatBot() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div className="flex-1 space-y-3 overflow-y-auto p-3 sm:p-4">
             {history.length === 0 && (
               <div className="bg-gray-100 text-gray-800 p-3 rounded-lg whitespace-pre-line">
                 Hello! I&apos;m your SmartDine assistant. I can help you with:
@@ -136,12 +136,12 @@ export function ChatBot() {
             {history.slice(-15).map(record => (
               <div key={record.id} className="space-y-2">
                 <div className="flex justify-end">
-                  <div className="max-w-[82%] p-3 rounded-lg whitespace-pre-line bg-[#F57C00] text-white">
+                  <div className="max-w-[88%] break-words rounded-lg bg-[#F57C00] p-3 text-white whitespace-pre-line sm:max-w-[82%]">
                     {record.userMessage}
                   </div>
                 </div>
                 <div className="flex justify-start">
-                  <div className="max-w-[88%] p-3 rounded-lg whitespace-pre-line bg-gray-100 text-gray-800">
+                  <div className="max-w-[92%] break-words rounded-lg bg-gray-100 p-3 text-gray-800 whitespace-pre-line sm:max-w-[88%]">
                     {record.botResponse}
 
                     <button
@@ -189,19 +189,19 @@ export function ChatBot() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="px-4 pb-2 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 px-3 pb-2 sm:px-4">
             {quickQuestions.map(question => (
               <button
                 key={question}
                 onClick={() => handleSend(question)}
-                className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full"
+                className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 hover:bg-gray-200"
               >
                 {question}
               </button>
             ))}
           </div>
 
-          <div className="p-4 border-t">
+          <div className="border-t p-3 sm:p-4">
             <div className="flex gap-2">
               <input
                 type="text"

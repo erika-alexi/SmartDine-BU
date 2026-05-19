@@ -25,7 +25,7 @@ export function CartPage() {
   }
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/menu')}
@@ -35,20 +35,20 @@ export function CartPage() {
           Continue Shopping
         </button>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+        <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Shopping Cart</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item, index) => (
-              <div key={`${item.id}-${index}`} className="bg-white rounded-lg shadow-md p-4">
-                <div className="flex gap-4">
+              <div key={`${item.id}-${index}`} className="rounded-lg bg-white p-4 shadow-md">
+                <div className="flex flex-col gap-4 sm:flex-row">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-24 h-24 object-cover rounded-lg"
+                    className="h-40 w-full rounded-lg object-cover sm:h-24 sm:w-24"
                   />
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-semibold text-gray-900 mb-1">{item.name}</h3>
                     <p className="text-sm text-gray-500 mb-2">{item.category}</p>
                     {item.addOns && item.addOns.length > 0 && (
@@ -63,7 +63,7 @@ export function CartPage() {
                       ₱{item.price + (item.addOns?.reduce((sum, a) => sum + a.price, 0) || 0)}
                     </p>
                   </div>
-                  <div className="flex flex-col items-end justify-between">
+                  <div className="flex items-center justify-between gap-3 sm:flex-col sm:items-end">
                     <button
                       onClick={() => removeFromCart(item.id, item.addOns)}
                       className="text-red-500 hover:text-red-700 p-2"
@@ -93,7 +93,7 @@ export function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-20">
+            <div className="sticky top-20 rounded-lg bg-white p-4 shadow-md sm:p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">

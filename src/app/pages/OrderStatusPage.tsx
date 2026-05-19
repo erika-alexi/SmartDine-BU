@@ -68,7 +68,7 @@ export function OrderStatusPage() {
   const currentStep = getStatusStep();
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/my-orders')}
@@ -78,16 +78,16 @@ export function OrderStatusPage() {
           Back to Orders
         </button>
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="rounded-lg bg-white p-4 shadow-lg sm:p-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Order Status</h1>
-            <p className="text-gray-600">Order #{orderId}</p>
+            <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Order Status</h1>
+            <p className="break-all text-gray-600">Order #{orderId}</p>
           </div>
 
           {/* Status Progress */}
           <div className="mb-12">
-            <div className="flex justify-between items-center relative">
-              <div className="absolute top-5 left-0 right-0 h-1 bg-gray-200 -z-10">
+            <div className="relative grid grid-cols-4 gap-2">
+              <div className="absolute left-0 right-0 top-5 -z-10 h-1 bg-gray-200">
                 <div
                   className="h-full bg-[#F57C00] transition-all duration-500"
                   style={{ width: `${(currentStep / 3) * 100}%` }}
@@ -100,7 +100,7 @@ export function OrderStatusPage() {
                 { label: 'Ready for Pickup', icon: Package },
                 { label: 'Completed', icon: CheckCircle }
               ].map((step, index) => (
-                <div key={index} className="flex flex-col items-center relative">
+                <div key={index} className="relative flex flex-col items-center">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
                       index <= currentStep
@@ -183,7 +183,7 @@ export function OrderStatusPage() {
 
           {/* Confirmation Section */}
           {order.status === 'Ready for Pickup' && !order.customerConfirmed && (
-            <div className="bg-orange-50 border border-[#F57C00] rounded-lg p-6 mb-6">
+            <div className="mb-6 rounded-lg border border-[#F57C00] bg-orange-50 p-4 sm:p-6">
               <h3 className="font-semibold text-gray-900 mb-2">Ready for Pickup!</h3>
               <p className="text-gray-600 mb-4">
                 Your order is ready. Please pick it up and confirm once received.

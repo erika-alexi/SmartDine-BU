@@ -60,7 +60,7 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-md mx-auto px-4">
         <button
           onClick={() => navigate('/')}
@@ -70,9 +70,9 @@ export function RegisterPage() {
           Back to Home
         </button>
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
+        <div className="rounded-lg bg-white p-5 shadow-lg sm:p-8">
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Create Account</h1>
             <p className="text-gray-600">Register with your Bicol University credentials</p>
           </div>
 
@@ -81,7 +81,7 @@ export function RegisterPage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Account Type
               </label>
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, accountType: 'student' })}

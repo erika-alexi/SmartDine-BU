@@ -137,7 +137,7 @@ export function MenuManagementPage() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/admin/dashboard')}
@@ -147,14 +147,14 @@ export function MenuManagementPage() {
           Back to Dashboard
         </button>
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Menu Management</h1>
+            <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">Menu Management</h1>
             <p className="text-gray-600">Add, edit, or remove menu items</p>
           </div>
           <button
             onClick={() => setShowAddModal(true)}
-            className="bg-[#F57C00] text-white px-6 py-3 rounded-lg hover:bg-[#E65100] flex items-center gap-2"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#F57C00] px-6 py-3 text-white hover:bg-[#E65100] sm:w-auto"
           >
             <Plus className="h-5 w-5" />
             Add New Item
@@ -162,7 +162,7 @@ export function MenuManagementPage() {
         </div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {menuItems.map(item => (
             <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
@@ -179,7 +179,7 @@ export function MenuManagementPage() {
                   </p>
                 )}
                 <p className="text-xl font-bold text-[#F57C00] mb-3">₱{item.price}</p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row">
                   <button
                     onClick={() => handleEdit(item)}
                     className="flex-1 bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 flex items-center justify-center gap-1"
@@ -203,11 +203,11 @@ export function MenuManagementPage() {
 
       {/* Add/Edit Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 sm:p-4">
           <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">
+            <div className="p-4 sm:p-6">
+              <div className="mb-6 flex items-center justify-between gap-3">
+                <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
                   {editingItem ? 'Edit Menu Item' : 'Add New Menu Item'}
                 </h2>
                 <button
@@ -288,7 +288,7 @@ export function MenuManagementPage() {
                   />
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex flex-col gap-3 pt-4 sm:flex-row">
                   <button
                     type="button"
                     onClick={resetForm}

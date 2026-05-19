@@ -57,7 +57,7 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/cart')}
@@ -67,12 +67,12 @@ export function CheckoutPage() {
           Back to Cart
         </button>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Checkout</h1>
+        <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Checkout</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div className="lg:col-span-2 space-y-6">
             {/* Order Details */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="rounded-lg bg-white p-4 shadow-md sm:p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Order Details</h2>
               <div className="space-y-3">
                 <div>
@@ -127,7 +127,7 @@ export function CheckoutPage() {
             </div>
 
             {/* Payment Method */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="rounded-lg bg-white p-4 shadow-md sm:p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment Method</h2>
               <div className="space-y-3">
                 <label className="flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors border-gray-300 has-[:checked]:border-[#F57C00] has-[:checked]:bg-orange-50">
@@ -164,12 +164,12 @@ export function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-20">
+            <div className="sticky top-20 rounded-lg bg-white p-4 shadow-md sm:p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
               <div className="space-y-2 mb-4">
                 {cart.map((item, index) => (
-                  <div key={`${item.id}-${index}`} className="flex justify-between text-sm">
-                    <span className="text-gray-600">
+                  <div key={`${item.id}-${index}`} className="flex justify-between gap-3 text-sm">
+                    <span className="min-w-0 break-words text-gray-600">
                       {item.name} x{item.quantity}
                       {item.addOns && item.addOns.length > 0 && (
                         <span className="text-xs text-gray-500">

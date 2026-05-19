@@ -33,7 +33,7 @@ export function MyOrdersPage() {
   };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-6 sm:py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/')}
@@ -44,12 +44,12 @@ export function MyOrdersPage() {
         </button>
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Orders</h1>
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl">My Orders</h1>
           <p className="text-gray-600">Track and manage your orders</p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex gap-2 mb-6">
+        <div className="mb-6 flex flex-wrap gap-2">
           {[
             { value: 'all', label: 'All Orders' },
             { value: 'active', label: 'Active' },
@@ -58,7 +58,7 @@ export function MyOrdersPage() {
             <button
               key={tab.value}
               onClick={() => setFilter(tab.value as any)}
-              className={`px-4 py-2 rounded-lg font-medium ${
+              className={`rounded-lg px-3 py-2 text-sm font-medium sm:px-4 sm:text-base ${
                 filter === tab.value
                   ? 'bg-[#F57C00] text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -87,13 +87,13 @@ export function MyOrdersPage() {
             {filteredOrders.map(order => (
               <div
                 key={order.id}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                className="cursor-pointer rounded-lg bg-white p-4 shadow-md transition-shadow hover:shadow-lg sm:p-6"
                 onClick={() => navigate(`/order-status/${order.id}`)}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-gray-900">Order #{order.id}</h3>
+                    <div className="mb-2 flex flex-wrap items-center gap-3">
+                      <h3 className="break-all font-semibold text-gray-900">Order #{order.id}</h3>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                         {displayStatus(order.status)}
                       </span>
@@ -105,8 +105,8 @@ export function MyOrdersPage() {
                       {formatDistanceToNow(new Date(order.createdAt), { addSuffix: true })}
                     </p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                    <div className="text-left sm:text-right">
                       <p className="text-sm text-gray-600 mb-1">Total</p>
                       <p className="text-xl font-bold text-[#F57C00]">₱{order.total}</p>
                     </div>
