@@ -68,25 +68,25 @@ export function HomePage() {
             <p className="text-sm text-gray-600 sm:text-base">Check out our featured dishes!</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 lg:gap-8">
             {todaysSpecials.map((item: any) => (
-              <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+              <div key={item.id} className="min-w-[78%] snap-start overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl sm:min-w-0">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-28 w-full object-cover sm:h-48"
+                  className="h-36 w-full object-cover sm:h-48"
                 />
                 <div className="p-3 sm:p-6">
-                  <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-gray-900 sm:mb-2 sm:text-xl">{item.name}</h3>
+                  <h3 className="mb-1 line-clamp-1 text-base font-semibold text-gray-900 sm:mb-2 sm:text-xl">{item.name}</h3>
                   <p className="mb-3 truncate text-xs text-gray-600 sm:mb-4 sm:text-base">{item.category}</p>
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <div className="flex items-center justify-between gap-3">
                     {/* THIS NOW USES THE 150 PRICE FROM THE LIVE item OBJECT */}
                     <span className="text-lg font-bold text-[#F57C00] sm:text-2xl">₱{item.price}</span>
                     <button
                       onClick={() => handleAddToCart(item)}
-                      className="shrink-0 rounded-lg bg-[#F57C00] px-3 py-2 text-xs text-white hover:bg-[#E65100] sm:px-4 sm:text-base"
+                      className="shrink-0 rounded-lg bg-[#F57C00] px-3 py-2 text-xs font-medium text-white hover:bg-[#E65100] sm:px-4 sm:text-base"
                     >
-                      Add to Cart
+                      Add
                     </button>
                   </div>
                 </div>
@@ -96,38 +96,38 @@ export function HomePage() {
         </div>
       </section>
 
-           {/* Features */}
-      <section className="bg-white py-8 sm:py-16">
+      {/* Features */}
+      <section className="bg-[#FFF8F1] py-8 sm:bg-white sm:py-16">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-            <div className="flex items-center gap-3 text-left sm:block sm:text-center">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#FFF3E0] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
-                <Utensils className="h-6 w-6 text-[#F57C00] sm:h-8 sm:w-8" />
+          <div className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-8 sm:overflow-visible sm:px-0 sm:pb-0">
+            <div className="min-w-[74%] snap-start rounded-lg bg-white/80 p-4 shadow-sm sm:min-w-0 sm:bg-transparent sm:p-0 sm:text-center sm:shadow-none">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#FFF1DE] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
+                <Utensils className="h-7 w-7 text-[#F57C00] sm:h-8 sm:w-8" />
               </div>
-              <div>
-                <h3 className="mb-1 font-semibold sm:mb-2 sm:text-lg">Wide Menu Selection</h3>
-                <p className="text-sm text-gray-600 sm:text-base">Choose from authentic Filipino dishes, snacks, and beverages</p>
-              </div>
+              <h3 className="mb-1.5 text-base font-bold leading-tight text-gray-900 sm:mb-2 sm:text-lg">Wide Menu Selection</h3>
+              <p className="text-sm leading-snug text-gray-500 sm:text-base sm:leading-relaxed">
+                Choose from Filipino dishes, snacks, drinks, and canteen favorites.
+              </p>
             </div>
 
-            <div className="flex items-center gap-3 text-left sm:block sm:text-center">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E3F2FD] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
-                <CreditCard className="h-6 w-6 text-[#0288D1] sm:h-8 sm:w-8" />
+            <div className="min-w-[74%] snap-start rounded-lg bg-white/80 p-4 shadow-sm sm:min-w-0 sm:bg-transparent sm:p-0 sm:text-center sm:shadow-none">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#EAF6FD] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
+                <CreditCard className="h-7 w-7 text-[#0288D1] sm:h-8 sm:w-8" />
               </div>
-              <div>
-                <h3 className="mb-1 font-semibold sm:mb-2 sm:text-lg">Flexible Payment</h3>
-                <p className="text-sm text-gray-600 sm:text-base">Pay with Cash on Delivery or GCash</p>
-              </div>
+              <h3 className="mb-1.5 text-base font-bold leading-tight text-gray-900 sm:mb-2 sm:text-lg">Flexible Payment</h3>
+              <p className="text-sm leading-snug text-gray-500 sm:text-base sm:leading-relaxed">
+                Pay through Cash on Delivery or upload GCash proof of payment.
+              </p>
             </div>
 
-            <div className="flex items-center gap-3 text-left sm:block sm:text-center">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#FFF3E0] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
-                <Zap className="h-6 w-6 text-[#F57C00] sm:h-8 sm:w-8" />
+            <div className="min-w-[74%] snap-start rounded-lg bg-white/80 p-4 shadow-sm sm:min-w-0 sm:bg-transparent sm:p-0 sm:text-center sm:shadow-none">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#FFF1DE] p-3 sm:mx-auto sm:mb-4 sm:h-16 sm:w-16 sm:p-4">
+                <Zap className="h-7 w-7 text-[#F57C00] sm:h-8 sm:w-8" />
               </div>
-              <div>
-                <h3 className="mb-1 font-semibold sm:mb-2 sm:text-lg">Quick & Easy</h3>
-                <p className="text-sm text-gray-600 sm:text-base">Order online and pick up at your convenience</p>
-              </div>
+              <h3 className="mb-1.5 text-base font-bold leading-tight text-gray-900 sm:mb-2 sm:text-lg">Quick & Easy</h3>
+              <p className="text-sm leading-snug text-gray-500 sm:text-base sm:leading-relaxed">
+                Order ahead, choose pickup time, and track status from your phone.
+              </p>
             </div>
           </div>
         </div>

@@ -36,8 +36,8 @@ export function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col w-full">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm w-full">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white shadow-sm">
+        <div className="relative w-full px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-16 items-center justify-between gap-3 py-2">
             {/* Logo */}
             <button
@@ -135,17 +135,17 @@ export function RootLayout() {
           </div>
 
           {showMobileMenu && (
-            <div className="space-y-2 border-t border-gray-100 pb-4 pt-3 md:hidden">
+            <div className="absolute left-3 right-3 top-full mt-2 space-y-1 rounded-xl border border-gray-100 bg-white p-2 shadow-xl md:hidden">
               {!isAdminRoute && user && (
                 <>
-                  <button onClick={() => goTo('/menu')} className="block w-full rounded-lg px-3 py-3 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
+                  <button onClick={() => goTo('/menu')} className="block w-full rounded-lg px-3 py-2.5 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
                     Menu
                   </button>
-                  <button onClick={() => goTo('/my-orders')} className="flex w-full items-center gap-2 rounded-lg px-3 py-3 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
+                  <button onClick={() => goTo('/my-orders')} className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
                     <Package className="h-4 w-4" />
                     Orders
                   </button>
-                  <button onClick={() => goTo('/cart')} className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
+                  <button onClick={() => goTo('/cart')} className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]">
                     <span className="flex items-center gap-2">
                       <ShoppingCart className="h-5 w-5" />
                       Cart
@@ -157,7 +157,7 @@ export function RootLayout() {
                       setShowNotifications(!showNotifications);
                       setShowMobileMenu(false);
                     }}
-                    className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]"
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-gray-700 hover:bg-orange-50 hover:text-[#F57C00]"
                   >
                     <span className="flex items-center gap-2">
                       <Bell className="h-5 w-5" />
@@ -174,14 +174,14 @@ export function RootLayout() {
                     <User className="h-5 w-5 shrink-0 text-gray-600" />
                     <span className="truncate">{user.name}</span>
                   </div>
-                  <button onClick={handleLogout} className="flex w-full items-center gap-2 rounded-lg px-3 py-3 text-left text-red-600 hover:bg-red-50">
+                  <button onClick={handleLogout} className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left text-red-600 hover:bg-red-50">
                     <LogOut className="h-5 w-5" />
                     Logout
                   </button>
                 </div>
               ) : (
                 !isAdminRoute && (
-                  <button onClick={() => goTo('/login')} className="w-full rounded-lg bg-[#F57C00] px-4 py-3 font-semibold text-white hover:bg-[#E65100]">
+                  <button onClick={() => goTo('/login')} className="w-full rounded-lg bg-[#F57C00] px-4 py-2.5 font-semibold text-white hover:bg-[#E65100]">
                     Login
                   </button>
                 )
